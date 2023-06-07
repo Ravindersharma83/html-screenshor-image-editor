@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Screenshot</title>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.3.2/dist/html2canvas.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="content">
+        <!-- The content you want to capture -->
+        <h1>Example Page</h1>
+        <p>This is the content of the page.</p>
+    </div>
+    <script>
+        $(document).ready(function() {
+            // $("#captureBtn").click(function() {
+                html2canvas(document.querySelector("#content")).then(function(canvas) {
+                    var link = document.createElement("a");
+                    document.body.appendChild(link);
+                    link.download = "screenshot.png";
+                    link.href = canvas.toDataURL("image/png");
+                    link.click();
+                });
+            // });
+        });
+    </script>
+</body>
+</html>
